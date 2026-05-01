@@ -1,0 +1,392 @@
+:root {
+    --accent: #00f5ff;
+    --bg: #050505;
+    --card: rgba(255, 255, 255, 0.03);
+    --border: rgba(255, 255, 255, 0.1);
+    --neon-green: #00ff88;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+body { background: var(--bg); color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; scroll-behavior: smooth; transition: opacity 0.5s ease-in-out; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 100px 20px; }
+.title-glow { font-family: 'Syncopate'; font-size: 1.4rem; color: var(--accent); margin-bottom: 50px; letter-spacing: 6px; text-shadow: 0 0 15px var(--accent); }
+
+
+
+
+/* Hero */
+.hero { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.glitch {
+  font-size: 11rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+  color: #333; /* Warna utama yang kalem */
+  transition: all 0.5s ease; /* Transisi halus */
+  cursor: pointer;
+  letter-spacing: 0px;
+}
+/* Animasi halus saat diam (subtle float/vibrate) */
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+}
+.glitch:hover {
+  /* Efek 'mecah' dengan merenggangkan huruf */
+  letter-spacing: 10px; 
+  color: #000;
+  filter: blur(0.5px);
+}
+/* Manipulasi layer saat hover untuk efek pecah */
+.glitch:hover::before {
+  animation: glitch-anim 0.3s infinite;
+  color: #ff00c1; /* Warna aksen tipis */
+  z-index: -1;
+}
+.glitch:hover::after {
+  animation: glitch-anim 0.3s infinite reverse;
+  color: #00fff9; /* Warna aksen tipis */
+  z-index: -2;
+}
+@keyframes glitch-anim {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+.clock-large { font-family: 'JetBrains Mono'; font-size: clamp(3.5rem, 12vw, 7rem); font-weight: 700; color: var(--accent); }
+.date-sub { opacity: 0.5; letter-spacing: 4px; text-transform: uppercase; font-size: 0.9rem; margin-top: 15px; }
+
+
+
+
+/* Bento Story */
+.bento-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 25px; }
+.bento-item { background: var(--card); border: 1px solid var(--border); padding: 40px; border-radius: 30px; backdrop-filter: blur(10px); }
+.stats { display: flex; flex-direction: column; gap: 20px; }
+.stat-box span { font-size: 3rem; font-weight: 800; color: var(--accent); }
+
+/* Gallery Estetik */
+.gallery-wrapper { position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; }
+.gallery-container { position: relative; width: 350px; height: 450px; transform-style: preserve-3d; transition: 0.5s; }
+.gallery-card { 
+    position: absolute; width: 100%; height: 100%; border-radius: 20px; 
+    overflow: hidden; border: 1px solid var(--border); transition: 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.gallery-card img { width: 100%; height: 100%; object-fit: cover; }
+.gallery-controls { margin-top: 50px; display: flex; gap: 30px; }
+.gallery-controls button {
+    background: transparent; border: 1px solid var(--accent); color: var(--accent);
+    padding: 12px 35px; font-family: 'Syncopate'; cursor: pointer; transition: 0.3s;
+}
+.gallery-controls button:hover { background: var(--accent); color: #000; box-shadow: 0 0 20px var(--accent); }
+
+/* Calendar & Events */
+.schedule-flex { display: grid; grid-template-columns: 1.2fr 1fr; gap: 30px; }
+.calendar-card, .events-card { background: var(--card); border: 1px solid var(--border); padding: 30px; border-radius: 25px; }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; margin-top: 20px; }
+.cal-day { padding: 10px; text-align: center; border-radius: 8px; font-size: 0.9rem; border: 1px solid transparent; }
+.cal-day.today { border-color: var(--accent); color: var(--accent); background: rgba(0, 245, 255, 0.1); }
+
+.countdown-box { text-align: center; padding: 20px; border: 1px dashed var(--accent); border-radius: 15px; margin-bottom: 25px; }
+#countdown-timer { font-family: 'JetBrains Mono'; font-size: 1.5rem; color: var(--accent); margin: 10px 0; }
+
+/* Savings Table - NO TILT (Gak Goyang) */
+.savings-container { width: 100%; }
+.input-card { background: var(--card); padding: 30px; border-radius: 20px; border: 1px solid var(--border); margin-bottom: 30px; }
+.input-row { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
+.input-row input { background: #111; border: 1px solid var(--border); padding: 15px; border-radius: 12px; color: #fff; width: 220px; }
+.input-row button { padding: 15px 30px; border-radius: 12px; border: none; font-weight: 700; cursor: pointer; background: var(--accent); }
+.btn-reset { background: #ff3131 !important; color: white !important; }
+
+.neon-table-container { 
+    position: relative; padding: 2px; border-radius: 20px; overflow: hidden; 
+    background: #000; margin-top: 20px;
+}
+.animated-border {
+    position: absolute; width: 200%; height: 200%; top: -50%; left: -50%;
+    background: conic-gradient(transparent, var(--accent), transparent, var(--accent), transparent);
+    animation: rotateFlow 4s linear infinite; z-index: 1;
+}
+.neon-table-container::after { content: ''; position: absolute; inset: 3px; background: #0a0a0a; border-radius: 18px; z-index: 2; }
+
+@keyframes rotateFlow { 100% { transform: rotate(360deg); } }
+
+table { width: 100%; border-collapse: collapse; position: relative; z-index: 3; }
+th, td { padding: 20px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.05); }
+th { font-family: 'Syncopate'; font-size: 0.7rem; color: var(--accent); }
+td { font-family: 'JetBrains Mono'; font-size: 0.9rem; }
+
+/* Members Section - 3 Per Baris & Garis Jalan */
+.grid-members { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.member-card-wrapper { 
+    position: relative; padding: 2px; border-radius: 30px; overflow: hidden;
+    opacity: 0; transform: translateY(80px); transition: 1s cubic-bezier(0.2, 1, 0.3, 1);
+}
+.member-card-wrapper.reveal { opacity: 1; transform: translateY(0); }
+.member-card-wrapper::before {
+    content: ''; position: absolute; width: 200%; height: 200%; top: -50%; left: -50%;
+    background: conic-gradient(transparent, var(--accent), transparent, var(--accent));
+    animation: rotateFlow 5s linear infinite; z-index: 1;
+}
+.member-card-wrapper::after { content: ''; position: absolute; inset: 3px; background: #111; border-radius: 28px; z-index: 2; }
+
+.card-content { position: relative; z-index: 3; padding: 40px; text-align: center; }
+.card-content img { width: 180px; height: 180px; border-radius: 25px; object-fit: cover; border: 3px solid var(--accent); margin-bottom: 25px; }
+.card-content h3 { font-family: 'Syncopate'; font-size: 1.2rem; color: #fff; margin-bottom: 10px; }
+.card-content p { font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
+.role-tag { color: var(--accent); font-family: 'Syncopate'; font-size: 0.7rem; letter-spacing: 2px; display: block; margin-bottom: 15px; }
+
+/* Cursor */
+.cursor-outer { position: fixed; width: 40px; height: 40px; border: 1px solid var(--accent); border-radius: 50%; pointer-events: none; z-index: 9999; transition: 0.1s; }
+.cursor-inner { position: fixed; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; pointer-events: none; z-index: 9999; }
+
+@media (max-width: 900px) {
+    .grid-members { grid-template-columns: repeat(2, 1fr); }
+    .bento-grid { grid-template-columns: 1fr; }
+}
+
+
+/* Overlay Salah Password */
+.dino-screen {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: #000;
+    z-index: 10000;
+    display: none; /* Sembunyi secara default */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.dino-content h1 {
+    color: #ff3131;
+    font-family: 'Syncopate';
+    text-shadow: 0 0 20px #ff3131;
+    margin-top: 20px;
+}
+
+/* Animasi Dino Gede */
+.dino-gif {
+    width: 400px; /* Ukuran digedein dari 100px ke 400px */
+    height: 400px;
+    background: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExaGNncnJlc3V5dmt0MGhtM252cXlma2hzMGY5MTlmemlrZ2xiNDFwayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/n3CY3uu70L2f3KrciA/giphy.gif') no-repeat center;
+    background-size: contain;
+    margin: 0 auto;
+    /* Animasinya kita bikin lari bolak-balik lebih lebar */
+    animation: dinoRun 0.8s infinite ease-in-out alternate;
+    filter: drop-shadow(0 0 20px rgba(255, 49, 49, 0.5)); /* Kasih glow merah dikit */
+}
+
+@keyframes dinoRun {
+    from { 
+        transform: translateX(-50px) rotate(-5deg); 
+    }
+    to { 
+        transform: translateX(50px) rotate(5deg); 
+    }
+}
+
+/* Tambahan biar teks di bawahnya juga gede */
+.dino-content h1 {
+    font-size: 3.5rem; /* Gedein font teks salah password */
+    color: #ff3131;
+    font-family: 'Syncopate';
+    text-shadow: 0 0 30px #ff3131;
+    margin-top: 30px;
+    letter-spacing: 10px;
+}
+
+
+
+
+
+/* ==========================================
+/* --- RESPONSIVE CORE --- */
+
+/* Hero Text Fix - Supaya gak kepotong di HP */
+.glitch {
+    font-size: clamp(3.5rem, 15vw, 11rem); /* Dinamis: Min 3.5rem, Ideal 15% lebar layar, Max 11rem */
+    letter-spacing: clamp(2px, 2vw, 10px);
+}
+
+/* Container adjustment */
+.container {
+    padding: 60px 15px; /* Lebih rapat di layar kecil */
+}
+
+/* Bento Grid Mobile Friendly */
+.bento-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Default tumpuk satu baris */
+    gap: 20px;
+}
+
+@media (min-width: 992px) {
+    .bento-grid {
+        grid-template-columns: 2fr 1fr; /* Kembali ke 2 kolom di layar PC */
+    }
+}
+
+/* --- GALLERY RESPONSIVE (DIBIKIN RAPIH) --- */
+.gallery-container {
+    position: relative;
+    width: 100%;
+    max-width: 350px; /* Batas maksimal lebar */
+    aspect-ratio: 3/4; /* Menjaga bentuk di segala device */
+    height: auto;
+    margin: 0 auto;
+}
+
+@media (max-width: 480px) {
+    .gallery-container {
+        max-width: 280px; /* Lebih kecil dikit di HP */
+    }
+    .gallery-controls button {
+        padding: 10px 20px;
+        font-size: 0.8rem;
+    }
+}
+
+/* --- CALENDAR RESPONSIVE (IPAD & HP FIX) --- */
+.schedule-flex {
+    display: flex;
+    flex-direction: column; /* Tumpuk di HP */
+    gap: 20px;
+}
+
+@media (min-width: 768px) {
+    .schedule-flex {
+        flex-direction: row; /* Berjajaran di iPad & Laptop */
+    }
+    .calendar-card { flex: 1.2; }
+    .events-card { flex: 1; }
+}
+
+.cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: clamp(5px, 1vw, 10px); /* Jarak antar tanggal dinamis */
+}
+
+.cal-day {
+    padding: 8px 2px;
+    font-size: clamp(0.7rem, 2vw, 0.9rem);
+}
+
+/* --- SAVINGS & MEMBERS RESPONSIVE --- */
+.input-row {
+    flex-direction: column;
+    width: 100%;
+}
+
+@media (min-width: 600px) {
+    .input-row {
+        flex-direction: row;
+    }
+}
+
+.input-row input {
+    width: 100% !important; /* Full width di mobile */
+}
+
+@media (min-width: 600px) {
+    .input-row input {
+        width: 220px !important;
+    }
+}
+
+.grid-members {
+    display: grid;
+    /* 1 kolom di HP, 2 di iPad/Tablet, 3 di PC */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* --- DINO SCREEN (HP FIX) --- */
+.dino-gif {
+    width: clamp(200px, 80vw, 400px); /* Ukuran dino menyesuaikan layar */
+    height: auto;
+    aspect-ratio: 1/1;
+}
+
+.dino-content h1 {
+    font-size: clamp(1.2rem, 5vw, 3.5rem);
+    padding: 0 20px;
+}
+
+
+/* --- LIGHTING EFFECT KHUSUS HP & TABLET --- */
+@media (max-width: 1024px) {
+    .glitch {
+        color: black; /* Warna teks jadi putih biar glow-nya kontras */
+        text-shadow: 
+            0 0 5px var(--accent),
+            0 0 10px var(--accent),
+            0 0 20px var(--accent);
+        animation: mobileGlow 2s infinite alternate;
+        letter-spacing: 5px; /* Kasih jarak antar huruf biar rapi di layar kecil */
+    }
+
+    /* Animasi pendaran lampu neon */
+    @keyframes mobileGlow {
+        from {
+            text-shadow: 
+                0 0 5px var(--accent),
+                0 0 10px var(--accent),
+                0 0 20px var(--accent);
+            opacity: 1;
+        }
+        to {
+            text-shadow: 
+                0 0 10px var(--accent),
+                0 0 20px var(--accent),
+                0 0 40px var(--accent),
+                0 0 60px #ff00c1; /* Perpaduan warna aksen pink cyberpunk */
+            opacity: 0.8;
+        }
+    }
+
+    /* Merapikan posisi dashboard di HP */
+    .hero {
+        padding: 0 10px;
+    }
+
+    .time-widget {
+        margin-top: 10px;
+    }
+
+    .clock-large {
+        font-size: 3.5rem; /* Ukuran jam disesuaikan biar gak menumpuk */
+    }
+}
+
+/* KHUSUS HP LAYAR KECIL (iPhone SE / Samsung seri lama) */
+@media (max-width: 400px) {
+    .glitch {
+        font-size: 3rem; /* Kecilin dikit lagi biar gak kepotong */
+    }
+    .clock-large {
+        font-size: 2.8rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .cursor-outer, .cursor-inner {
+        display: none !important; /* Hapus kursor palsu di HP */
+    }
+    * {
+        cursor: auto !important; /* Kembalikan kursor standar buat sentuhan jari */
+    }
+}

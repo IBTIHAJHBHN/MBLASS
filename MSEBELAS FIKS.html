@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MSEBELAS | Digital Circle breee</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Plus+Jakarta+Sans:wght@300;500;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="MSEBELAS STYLE FIKS.css">
+</head>
+<body>
+    <div class="cursor-outer"></div>
+    <div class="cursor-inner"></div>
+
+    <header class="dashboard">
+        <div class="hero">
+            <h1 class="glitch" data-text="MSEBELAS">MSEBELAS</h1>
+            <div class="time-widget">
+                <div id="digital-clock" class="clock-large">00:00:00</div>
+                <div id="current-date" class="date-sub">Minggu, 26 April 2026</div>
+                <div id="current-date" class="date-sub">---Mama Salsa---</div>
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="container section">
+        <h2 class="title-glow">OUR STORY</h2>
+        <div class="bento-grid">
+            <div class="bento-item main-story">
+                <h3>Awal Mula</h3>
+                <p>---</p>
+            </div>
+            <div class="bento-item stats">
+                <div class="stat-box"><span>11</span><p>INSAN</p></div>
+                <div class="stat-box"><span>1</span><p>Visi</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="container section">
+        <h2 class="title-glow">MEMORIES</h2>
+        <div class="gallery-wrapper">
+            <div class="gallery-container" id="gallery-container">
+                </div>
+            <div class="gallery-controls">
+                <button id="prevGallery">← PREV</button>
+                <button id="nextGallery">NEXT →</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="calendar-section" class="container section">
+        <h2 class="title-glow">M11 CALENDAR</h2>
+        <div class="schedule-flex">
+            <div class="calendar-card">
+                <div class="cal-header"><h3 id="month-display">APRIL 2026</h3></div>
+                <div class="cal-grid" id="cal-grid"></div>
+            </div>
+            <div class="events-card">
+                <div class="countdown-box">
+                    <p>NEXT EVENT</p>
+                    <div id="countdown-timer">00d 00h 00m 00s</div>
+                    <h4 id="next-event-name">Loading...</h4>
+                </div>
+                <ul id="event-list" class="styled-list"></ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="savings" class="container section">
+        <h2 class="title-glow">INDIVIDUAL SAVINGS</h2>
+        <div class="savings-container">
+            <div class="input-card">
+    <div class="input-row">
+        <input type="text" id="input-nama" placeholder="Nama Sesuai List">
+        <input type="password" id="input-password" placeholder="PIN Anda"> <!-- Kolom Baru -->
+        <input type="number" id="input-nominal" placeholder="Nominal Rp">
+        <button onclick="inputTabunganIndividu()">INPUT</button>
+        <button onclick="resetTabungan()" class="btn-reset">RESET</button>
+    </div>
+</div>
+
+<!-- Overlay untuk Layar Hitam & Dino -->
+<!-- Cek bagian ini di HTML-mu, pastikan strukturnya gini -->
+<div id="dino-overlay" class="dino-screen">
+    <div class="dino-content">
+        <div class="dino-gif"></div>
+        <h1>CIAAAAAAHHHH SALAHHHHH WKWKWKWKWK</h1>
+        <p style="color: #555; letter-spacing: 5px; margin-top: 10px;">SISTEM INI TERKUNCI 10 DETIK YA</p>
+        <p style="color: #555; letter-spacing: 5px; margin-top: 10px;">KON TUH YANG SABAR REKK</p>
+    </div>
+</div>
+            <div class="neon-table-container">
+                <div class="animated-border"></div>
+                <div class="table-scroll">
+                    <table id="savings-table">
+                        <thead>
+                            <tr>
+                                <th>NAME</th>
+                                <th>DATE</th>
+                                <th>NOMINAL</th>
+                                <th>TOTAL BALANCE</th>
+                            </tr>
+                        </thead>
+                        <tbody id="savings-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="members" class="container section">
+        <h2 class="title-glow">THE MEMBERS</h2>
+        <div class="grid-members" id="member-container"></div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <script src="MSEBELAS JAVA FIKS.js"></script>
+</body>
+</html>
